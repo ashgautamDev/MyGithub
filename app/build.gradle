@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id "dagger.hilt.android.plugin"
 }
 
 android {
@@ -9,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.ashish.mygithub"
         minSdk 27
-        targetSdk 31
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -68,4 +70,19 @@ dependencies {
 
     def coilVersion = "0.13.0"
     implementation "com.google.accompanist:accompanist-coil:$coilVersion"
+
+    def retrofit = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    //Dagger hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
 }

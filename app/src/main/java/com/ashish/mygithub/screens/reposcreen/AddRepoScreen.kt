@@ -1,6 +1,6 @@
 package com.ashish.mygithub.screens.reposcreen
 
-import android.icu.text.CaseMap
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,31 +13,48 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.ashish.mygithub.navigation.Screens
+import kotlin.math.log
 
 @Composable
-fun AddRepoScreen(onClick : () ->Unit) {
+fun AddRepoScreen(navController: NavController) {
     Scaffold(
         topBar = {
 
             TopAppBar(
-                title = {"Add Repo"},
-               navigationIcon = { Icons.Default.ArrowBack }
+                title = { Text(text = "Add Repo") },
+                navigationIcon = { Icons.Default.ArrowBack }
             )
         },
         content = {
             Credentials(ownerName = "", repoName = "")
 
-        } ,
+        },
         bottomBar = {
-            Button(onClick = { onClick() } ,
+            Button(
+                onClick = {
+
+                    navController.navigate(Screens.StarterScreen.route)
+
+                    Log.d("AddRepo", "AddRepoScreen:details are saved ")
+                    // this button will be Make request for provide repo
+                    //Add the owner info and github repo info to datastore
+                },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(32.dp)
                     .background(
                         color = MaterialTheme.colors.primary,
                         shape = RoundedCornerShape(36.dp)
-                    ))
+                    )
+            )
             {
-                Text(text = "Add Repo" , style = TextStyle(fontWeight = FontWeight.Bold ) , color = MaterialTheme.colors.onPrimary)
+                Text(
+                    text = "Add Repo",
+                    style = TextStyle(fontWeight = FontWeight.Bold),
+                    color = MaterialTheme.colors.onPrimary
+                )
 
 
             }

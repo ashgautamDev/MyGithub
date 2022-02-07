@@ -14,10 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RepoCard() {
+fun RepoCard(repoName: String , repoDesc : String) {
 
-    val repoName = "myRepository"
-    val repoDesc = "kjsdoifj sdfoia lwf dfkjnosidfa isdofiasdf;asiodf[awuoefhawe;f dfwefnufvnvh"
+
 
     Column(modifier = Modifier
         .fillMaxWidth()
